@@ -1,272 +1,81 @@
 import streamlit as st
+import pandas as pd
 
-# -------------------------------------
-# CONFIGURACIÓN DE LA PÁGINA
-# -------------------------------------
+# Configuración general
+st.set_page_config(page_title="IA en la detección temprana", layout="wide")
 
-st.set_page_config(
-    page_title="IA y detección temprana de trastornos del aprendizaje",
-    page_icon="🧠",
-    layout="wide"
-)
-
-# -------------------------------------
-# ESTILO CSS
-# -------------------------------------
-
+# Estilos CSS
 st.markdown("""
-<style>
-
-body{
-    background-color:#f7f5f2;
-}
-
-.card{
-    background:white;
-    padding:25px;
-    border-radius:20px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.08);
-    margin-bottom:20px;
-}
-
-.quote{
-    text-align:right;
-    font-style:italic;
-    color:#555;
-    margin-bottom:25px;
-}
-
-.ref{
-    background:#f3e9dc;
-    padding:10px 15px;
-    border-radius:15px;
-    margin:5px;
-}
-
-</style>
+    <style>
+    .rounded-box {
+        border-radius: 15px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        margin-bottom: 20px;
+    }
+    </style>
 """, unsafe_allow_html=True)
 
-# -------------------------------------
-# TITULO
-# -------------------------------------
+# Título y frase motivadora
+st.title("El impacto de la inteligencia artificial en la detección temprana de trastornos del aprendizaje")
+st.markdown("<p style='text-align:right; font-style:italic;'>La inteligencia artificial no reemplaza al docente, lo potencia: abre caminos para que cada estudiante alcance su máximo potencial.</p>", unsafe_allow_html=True)
 
-st.title("Impacto de la Inteligencia Artificial en la detección temprana de trastornos del aprendizaje")
+# Tabs como diapositivas
+tabs = st.tabs(["Resumen", "Conceptos clave", "Beneficios", "Desafíos", "Conclusiones", "Artículos relacionados", "Referencias"])
 
-st.markdown(
-"""
-<div class="quote">
-"La inteligencia artificial no reemplaza al docente, lo potencia: abre caminos para que cada estudiante alcance su máximo potencial."
-</div>
-""",
-unsafe_allow_html=True
-)
+with tabs[0]:
+    st.header("Resumen")
+    st.markdown("<div class='rounded-box'>La IA permite identificar señales de dislexia, problemas de atención y dificultades lectoras mediante el análisis de datos académicos y patrones de comportamiento. Esto facilita intervenciones más rápidas y personalizadas, promoviendo una educación inclusiva.</div>", unsafe_allow_html=True)
 
-# -------------------------------------
-# MENÚ DE NAVEGACIÓN
-# -------------------------------------
+with tabs[1]:
+    st.header("Conceptos clave")
+    conceptos = {
+        "Trastornos del aprendizaje": "Dificultades específicas en lectura, escritura, atención o procesamiento de información.",
+        "Detección temprana": "Identificación de señales iniciales para intervenir antes de que se agraven.",
+        "Educación inclusiva": "Modelo que atiende la diversidad de estudiantes.",
+        "Ética en IA": "Privacidad, transparencia y uso responsable de datos educativos."
+    }
+    df = pd.DataFrame(list(conceptos.items()), columns=["Concepto", "Definición"])
+    st.table(df)
 
-menu = st.sidebar.radio(
-    "Navegación",
-    [
-        "Resumen",
-        "Conceptos clave",
-        "Beneficios",
-        "Desafíos",
-        "Perspectivas futuras",
-        "Artículos relacionados",
-        "Referencias"
-    ]
-)
-
-# -------------------------------------
-# RESUMEN
-# -------------------------------------
-
-if menu == "Resumen":
-
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-
-    st.subheader("Resumen divulgativo")
-
-    st.write("""
-La inteligencia artificial (IA) está transformando la detección temprana de trastornos del aprendizaje.
-Mediante el análisis de datos académicos y patrones de comportamiento, los sistemas inteligentes pueden
-identificar señales de dificultades como dislexia, problemas de atención o dificultades lectoras.
-
-Esto permite intervenciones educativas más tempranas y personalizadas, favoreciendo una educación inclusiva.
-
-Sin embargo, es importante que la IA se utilice de manera ética y responsable,
-como complemento del trabajo docente y respetando la privacidad de los datos educativos.
-""")
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-
-# -------------------------------------
-# CONCEPTOS CLAVE
-# -------------------------------------
-
-elif menu == "Conceptos clave":
-
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-
-    st.subheader("Conceptos clave")
-
+with tabs[2]:
+    st.header("Beneficios")
     st.markdown("""
-**Inteligencia Artificial (IA)**  
-Tecnología que simula procesos de razonamiento humano mediante algoritmos y aprendizaje automático.
+    - Mayor precisión y rapidez  
+    - Personalización del aprendizaje  
+    - Reducción de sesgos humanos
+    """)
 
-**Trastornos del aprendizaje**  
-Dificultades específicas en lectura, escritura, atención o procesamiento de información.
-
-**Detección temprana**  
-Identificación de señales iniciales que permiten intervenir antes de que las dificultades se agraven.
-
-**Educación inclusiva**  
-Modelo educativo que busca atender la diversidad de estudiantes.
-
-**Ética en IA**  
-Uso responsable de datos, transparencia algorítmica y protección de la privacidad.
-""")
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-
-# -------------------------------------
-# BENEFICIOS
-# -------------------------------------
-
-elif menu == "Beneficios":
-
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-
-    st.subheader("Beneficios de la IA")
-
+with tabs[3]:
+    st.header("Desafíos")
     st.markdown("""
-✔ Mayor precisión en la identificación de dificultades de aprendizaje.
+    - Privacidad de datos  
+    - Riesgos de sesgo en algoritmos  
+    - Necesidad de capacitación docente  
+    - Evitar la deshumanización
+    """)
 
-✔ Análisis de grandes volúmenes de datos educativos.
+with tabs[4]:
+    st.header("Conclusiones")
+    st.markdown("La IA mejora la detección temprana y promueve la educación inclusiva, pero debe equilibrarse con valores humanos y ética educativa.")
 
-✔ Intervenciones educativas más tempranas.
-
-✔ Personalización del aprendizaje.
-
-✔ Apoyo en la toma de decisiones pedagógicas.
-""")
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-
-# -------------------------------------
-# DESAFÍOS
-# -------------------------------------
-
-elif menu == "Desafíos":
-
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-
-    st.subheader("Desafíos y consideraciones éticas")
-
-    st.markdown("""
-• Privacidad de datos estudiantiles  
-• Sesgos en algoritmos de inteligencia artificial  
-• Brecha digital entre instituciones educativas  
-• Necesidad de capacitación docente en IA  
-• Evitar la deshumanización del proceso educativo
-""")
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-
-# -------------------------------------
-# PERSPECTIVAS FUTURAS
-# -------------------------------------
-
-elif menu == "Perspectivas futuras":
-
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-
-    st.subheader("Perspectivas futuras")
-
-    st.write("""
-La inteligencia artificial continuará evolucionando en el ámbito educativo.
-
-En el futuro, los sistemas inteligentes podrán integrarse con plataformas educativas
-para ofrecer evaluaciones continuas, personalizadas y adaptativas.
-
-Sin embargo, su implementación debe equilibrar la innovación tecnológica con
-los valores humanos, garantizando la participación activa del docente.
-""")
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-
-# -------------------------------------
-# ARTÍCULOS RELACIONADOS
-# -------------------------------------
-
-elif menu == "Artículos relacionados":
-
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-
+with tabs[5]:
     st.subheader("Artículos relacionados")
+    articulos = {
+        "Espinosa (2024)": "Revisión sistemática sobre IA en la detección de dislexia, discalculia y TDAH.",
+        "NeurekaLAB (2023)": "Plataforma gamificada para detección temprana con IA y minijuegos.",
+        "García (2025)": "Modelos predictivos de rendimiento académico mediante machine learning."
+    }
+    opcion = st.selectbox("Selecciona un artículo:", list(articulos.keys()))
+    st.info(articulos[opcion])
 
-    articulo = st.selectbox(
-        "Selecciona un artículo",
-        [
-            "NeurekaLAB y detección temprana",
-            "IA en educación personalizada",
-            "IA en educación infantil"
-        ]
-    )
-
-    if articulo == "NeurekaLAB y detección temprana":
-
-        st.write("""
-La plataforma NeurekaLAB utiliza inteligencia artificial y gamificación para detectar
-trastornos del aprendizaje mediante minijuegos que analizan patrones cognitivos
-y comportamientos de los estudiantes.
-""")
-
-    elif articulo == "IA en educación personalizada":
-
-        st.write("""
-Los sistemas de inteligencia artificial permiten analizar el desempeño estudiantil
-para adaptar contenidos educativos a las necesidades individuales.
-""")
-
-    elif articulo == "IA en educación infantil":
-
-        st.write("""
-La inteligencia artificial puede apoyar el desarrollo cognitivo y lingüístico
-en la educación infantil mediante herramientas adaptativas y entornos digitales.
-""")
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-
-# -------------------------------------
-# REFERENCIAS
-# -------------------------------------
-
-elif menu == "Referencias":
-
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-
-    st.subheader("Referencias académicas")
-
-    st.markdown("""
-**Sphaera E (2024)**  
-Impacto de la realidad virtual en la terapia de trastornos de ansiedad.
-
-**Espinosa P (2024)**  
-Impacto de la inteligencia artificial en la detección temprana de trastornos del aprendizaje.
-
-**García M (2025)**  
-La inteligencia artificial en la educación: hacia un aprendizaje personalizado.
-
-**NeurekaLAB (2023)**  
-Gamificación y detección temprana de trastornos del aprendizaje.
-""")
-
-    st.markdown('</div>', unsafe_allow_html=True)
+with tabs[6]:
+    st.subheader("Referencias interactivas")
+    if st.button("Ver referencia: Espinosa (2024)"):
+        st.markdown("""
+        <div class='rounded-box'>
+        <h4>Espinosa (2024)</h4>
+        <p>El artículo presenta una revisión sistemática sobre el uso de la IA para la detección temprana de trastornos del aprendizaje. 
+        Señala beneficios en precisión diagnóstica, pero también limitaciones éticas y metodológicas.</p>
+        </div>
+        """, unsafe_allow_html=True)
