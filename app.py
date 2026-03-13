@@ -8,19 +8,63 @@ st.set_page_config(page_title="IA en la detección temprana", layout="wide")
 st.sidebar.title("Navegación")
 pagina = st.sidebar.radio(
     "Selecciona una sección:",
-    ["Resumen", "Conceptos clave", "Beneficios", "Desafíos", "Conclusiones", "Artículos relacionados", "Referencias"]
+    [
+        "Título",
+        "Introducción",
+        "Trastornos del aprendizaje",
+        "Detección temprana",
+        "Educación inclusiva",
+        "Ética en IA",
+        "Conceptos clave",
+        "Beneficios",
+        "Desafíos",
+        "Perspectivas futuras",
+        "Rol docente",
+        "Conclusiones",
+        "Artículos relacionados",
+        "Referencias"
+    ]
 )
 
-# Título principal
-st.title("El impacto de la inteligencia artificial en la detección temprana de trastornos del aprendizaje")
-st.markdown("<p style='text-align:right; font-style:italic;'>La inteligencia artificial no reemplaza al docente, lo potencia: abre caminos para que cada estudiante alcance su máximo potencial.</p>", unsafe_allow_html=True)
-
 # Contenido según la página seleccionada
-if pagina == "Resumen":
-    st.header("Resumen")
+if pagina == "Título":
+    st.title("El impacto de la inteligencia artificial en la detección temprana de trastornos del aprendizaje")
+    st.markdown("<p style='text-align:right; font-style:italic;'>La inteligencia artificial no reemplaza al docente, lo potencia: abre caminos para que cada estudiante alcance su máximo potencial.</p>", unsafe_allow_html=True)
+
+elif pagina == "Introducción":
+    st.header("Introducción")
     st.markdown("""
-    La IA permite identificar señales de dislexia, problemas de atención y dificultades lectoras mediante el análisis de datos académicos y patrones de comportamiento. 
-    Esto facilita intervenciones más rápidas y personalizadas, promoviendo una educación inclusiva.
+    La inteligencia artificial (IA) está transformando la detección temprana de trastornos del aprendizaje.  
+    Mediante el análisis de datos académicos y patrones de comportamiento, la IA permite identificar señales de dislexia, problemas de atención y dificultades lectoras.  
+    Esto facilita intervenciones más rápidas y personalizadas, promoviendo una educación inclusiva.  
+    """)
+
+elif pagina == "Trastornos del aprendizaje":
+    st.header("Trastornos del aprendizaje")
+    st.markdown("""
+    Dificultades específicas en lectura, escritura, atención o procesamiento de información que afectan el rendimiento académico.  
+    Ejemplos: dislexia, discalculia, TDAH.  
+    """)
+
+elif pagina == "Detección temprana":
+    st.header("Detección temprana")
+    st.markdown("""
+    Identificación de señales iniciales de dificultades para intervenir antes de que se agraven.  
+    La IA permite reconocer patrones complejos en datos educativos, mejorando la precisión diagnóstica.  
+    """)
+
+elif pagina == "Educación inclusiva":
+    st.header("Educación inclusiva")
+    st.markdown("""
+    Modelo educativo que busca atender las necesidades de todos los estudiantes, respetando la diversidad.  
+    La IA puede apoyar este modelo al personalizar el aprendizaje y reducir sesgos humanos.  
+    """)
+
+elif pagina == "Ética en IA":
+    st.header("Ética en IA")
+    st.markdown("""
+    Principios que garantizan privacidad, transparencia y uso responsable de los datos educativos.  
+    Es fundamental que la IA complemente al docente y no lo sustituya, evitando la deshumanización del proceso educativo.  
     """)
 
 elif pagina == "Conceptos clave":
@@ -35,27 +79,45 @@ elif pagina == "Conceptos clave":
     st.table(df)
 
 elif pagina == "Beneficios":
-    st.header("Beneficios")
+    st.header("Beneficios de la IA en la detección temprana")
     st.markdown("""
     - Mayor precisión y rapidez  
     - Personalización del aprendizaje  
-    - Reducción de sesgos humanos
+    - Reducción de sesgos humanos  
+    - Evaluaciones continuas del desempeño estudiantil  
     """)
 
 elif pagina == "Desafíos":
-    st.header("Desafíos")
+    st.header("Desafíos y consideraciones éticas")
     st.markdown("""
-    - Privacidad de datos  
+    - Privacidad de datos y transparencia algorítmica  
     - Riesgos de sesgo en algoritmos  
     - Necesidad de capacitación docente  
-    - Evitar la deshumanización
+    - Evitar la deshumanización del proceso educativo  
+    """)
+
+elif pagina == "Perspectivas futuras":
+    st.header("Perspectivas futuras")
+    st.markdown("""
+    - Adaptación de la IA a distintos contextos culturales y educativos  
+    - Evaluación de la efectividad a largo plazo  
+    - Innovaciones en aulas virtuales y educación inclusiva  
+    - Integración con neurociencia y gamificación para mejorar diagnósticos  
+    """)
+
+elif pagina == "Rol docente":
+    st.header("Percepción y rol de los docentes")
+    st.markdown("""
+    - Actitudes frente al uso de IA en el aula  
+    - Integración en la práctica pedagógica  
+    - IA como complemento del trabajo docente, nunca como sustituto  
     """)
 
 elif pagina == "Conclusiones":
     st.header("Conclusiones")
     st.markdown("""
-    La IA mejora la detección temprana y promueve la educación inclusiva, 
-    pero debe equilibrarse con valores humanos y ética educativa.
+    La IA mejora la detección temprana de trastornos del aprendizaje y promueve la educación inclusiva.  
+    Sin embargo, requiere un equilibrio entre innovación tecnológica y valores humanos, garantizando ética, transparencia y respeto a la diversidad.  
     """)
 
 elif pagina == "Artículos relacionados":
@@ -63,25 +125,31 @@ elif pagina == "Artículos relacionados":
     articulos = {
         "Espinosa (2024)": "Revisión sistemática sobre IA en la detección de dislexia, discalculia y TDAH.",
         "NeurekaLAB (2023)": "Plataforma gamificada para detección temprana con IA y minijuegos.",
-        "García (2025)": "Modelos predictivos de rendimiento académico mediante machine learning."
+        "García (2025)": "Modelos predictivos de rendimiento académico mediante machine learning.",
+        "Verzosi et al. (2025)": "Uso de IA en educación infantil, riesgos y oportunidades.",
+        "Vargas (2024)": "IA como herramienta para optimizar procesos de enseñanza-aprendizaje."
     }
     opcion = st.selectbox("Selecciona un artículo:", list(articulos.keys()))
     st.info(articulos[opcion])
 
 elif pagina == "Referencias":
-    st.subheader("Referencias bibliográficas")
-    with st.expander("Espinosa (2024)"):
-        st.write("""
-        El artículo presenta una revisión sistemática sobre el uso de la IA para la detección temprana de trastornos del aprendizaje. 
-        Señala beneficios en precisión diagnóstica, pero también limitaciones éticas y metodológicas.
-        """)
+    st.header("Referencias bibliográficas")
+    st.markdown("Haz clic en cada referencia para desplegar su información.")
+    with st.expander("Sphaera E (2024)"):
+        st.write("Modelo basado en IA para detección temprana de dificultades lectoras en primaria. Mejora la precisión diagnóstica frente a métodos tradicionales.")
+    with st.expander("Alejandra P, Cevallos E (2024)"):
+        st.write("Ensayo sobre el impacto de la IA en la detección temprana de trastornos del aprendizaje. Revisión sistemática de 15 fuentes académicas.")
+    with st.expander("Espinosa P (2024)"):
+        st.write("Revisión sistemática sobre IA en la detección de dislexia, discalculia y TDAH. Señala beneficios y limitaciones éticas y metodológicas.")
+    with st.expander("García M (2025)"):
+        st.write("Uso de machine learning para predecir estudiantes en riesgo de bajo rendimiento académico. Alta precisión en modelos supervisados.")
     with st.expander("NeurekaLAB (2023)"):
-        st.write("""
-        Plataforma gamificada que utiliza IA y minijuegos para detectar dislexia, TDAH y dificultades visoespaciales, 
-        con precisión superior al 90 % en estudios iniciales.
-        """)
-    with st.expander("García (2025)"):
-        st.write("""
-        Analiza modelos predictivos de rendimiento académico mediante machine learning, 
-        destacando su potencial para mejorar la retención escolar y el rendimiento.
-        """)
+        st.write("Plataforma gamificada con IA para detectar dislexia y TDAH mediante minijuegos interactivos. Precisión superior al 90%.")
+    with st.expander("Verzosi et al. (2025)"):
+        st.write("Revisión sobre IA en educación infantil. Oportunidades y riesgos como dependencia tecnológica y problemas de privacidad.")
+    with st.expander("Vargas G (2024)"):
+        st.write("Aplicación de IA en enseñanza-aprendizaje. Beneficios en personalización y retos como brecha digital y necesidad de marcos regulatorios.")
+    with st.expander("Gómez A et al. (2024)"):
+        st.write("Explora desafíos éticos de la IA en la personalización del aprendizaje: equidad, protección de datos y diversidad educativa.")
+    with st.expander("Martínez B (2025)"):
+        st.write("Impacto de la IA generativa en enseñanza-aprendizaje. Beneficios y riesgos, necesidad de normativas claras y formación docente.")
